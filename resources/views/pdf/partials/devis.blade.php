@@ -139,39 +139,39 @@
         </thead>
         <tbody>
         <tr>
-        <td>Semelle 1 x 1 x 0,50</td>
-        <td>FT</td>
-        <td class="right">1</td>
-        <td class="right">350,00 €</td>
-        <td class="right">20 %</td>
-        <td class="right">350,00 €</td>
+        <td>Exemple 1 x 1 x 0,50</td>
+        <td>Autre Exemple</td>
+        <td class="right">X</td>
+        <td class="right">XXX,XX €</td>
+        <td class="right">XX %</td>
+        <td class="right">XXX,XX €</td>
         </tr>
         <tr>
-        <td>Mur Stepoc</td>
-        <td>M²</td>
-        <td class="right">3,75</td>
-        <td class="right">190,00 €</td>
-        <td class="right">20 %</td>
-        <td class="right">712,50 €</td>
+        <td>Exemple 2</td>
+        <td>Autre Exemple 2</td>
+        <td class="right">XX,XX</td>
+        <td class="right">XX €</td>
+        <td class="right">XX %</td>
+        <td class="right">XX €</td>
         </tr>
         <tr>
-        <td>Frais de déplacement</td>
-        <td>FT</td>
-        <td class="right">1</td>
-        <td class="right">300,00 €</td>
-        <td class="right">20 %</td>
-        <td class="right">300,00 €</td>
+        <td>Exemple Frais de déplacement</td>
+        <td>Autre Exemple</td>
+        <td class="right">X</td>
+        <td class="right">XX €</td>
+        <td class="right">XX %</td>
+        <td class="right">XX €</td>
         </tr>
         </tbody>
         </table>
         </section>
 
         <table class="totals">
-        <tr><td class="label">Sous-total</td><td class="value">1 362,50 €</td></tr>
-        <tr><td class="label">Frais de gestion (0,5 %)</td><td class="value">-6,81 €</td></tr>
-        <tr><td class="label">Total</td><td class="value">1 355,69 €</td></tr>
-        <tr><td class="label">Retenue de garantie (5 %)</td><td class="value">-67,78 €</td></tr>
-        <tr><td class="label final">Montant facturé</td><td class="value final">1 287,90 €</td></tr>
+        <tr><td class="label">Exemple Sous-total</td><td class="value">X XXX,XX €</td></tr>
+        <tr><td class="label">Exemple Frais de gestion XX</td><td class="value">-XX €</td></tr>
+        <tr><td class="label">Exemple Total</td><td class="value">XX</td></tr>
+        <tr><td class="label">Exemple Retenue de garantie (X %)</td><td class="value">-XX €</td></tr>
+        <tr><td class="label final">Exemple Montant facturé</td><td class="value final">XX €</td></tr>
         </table>
 
         <div class="note">Autoliquidation – Régime de la sous-traitance</div>
