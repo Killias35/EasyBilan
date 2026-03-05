@@ -35,6 +35,11 @@ Route::put('/factures/edit/{facture}', [FacturesController::class, 'update'])->n
 Route::get('/factures/delete/{facture}', [FacturesController::class, 'destroy'])->name('factures.destroy');
 
 Route::get('/reglements', [ReglementsController::class, 'index'])->name('reglements.index');
+Route::get('/reglements/create', [ReglementsController::class, 'create'])->name('reglements.create');
+Route::post('/reglements/create', [ReglementsController::class, 'store'])->name('reglements.store');
+Route::get('/reglements/edit/{reglement}', [ReglementsController::class, 'edit'])->name('reglements.edit');
+Route::put('/reglements/edit/{reglement}', [ReglementsController::class, 'update'])->name('reglements.update');
+Route::get('/reglements/delete/{reglement}', [ReglementsController::class, 'destroy'])->name('reglements.destroy');
 
 
 Route::get('/db/import', [ExcelController::class, 'show'])->name('excel.show');

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="max-w-6xl mx-auto px-4 py-10">
+<div class="mx-auto px-4 py-10">
 
     <h1 class="text-3xl font-semibold mb-6">Liste des factures</h1>
     @if(session('success'))
