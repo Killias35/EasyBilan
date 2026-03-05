@@ -14,6 +14,12 @@ use App\Http\Controllers\DevisController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/clients', [ClientsController::class, 'index'])->name('clients.index');
+Route::get('/clients/create', [ClientsController::class, 'create'])->name('clients.create');
+Route::post('/clients/create', [ClientsController::class, 'store'])->name('clients.store');
+Route::get('/clients/edit/{client}', [ClientsController::class, 'edit'])->name('clients.edit');
+Route::put('/clients/edit/{client}', [ClientsController::class, 'update'])->name('clients.update');
+Route::get('/clients/delete/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
 Route::get('/chantiers', [ChantiersController::class, 'index'])->name('chantiers.index');
 Route::get('/factures', [FacturesController::class, 'index'])->name('factures.index');
 Route::get('/reglements', [ReglementsController::class, 'index'])->name('reglements.index');
