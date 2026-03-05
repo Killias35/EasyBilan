@@ -28,6 +28,12 @@ Route::put('/chantiers/edit/{chantier}', [ChantiersController::class, 'update'])
 Route::get('/chantiers/delete/{chantier}', [ChantiersController::class, 'destroy'])->name('chantiers.destroy');
 
 Route::get('/factures', [FacturesController::class, 'index'])->name('factures.index');
+Route::get('/factures/create', [FacturesController::class, 'create'])->name('factures.create');
+Route::post('/factures/create', [FacturesController::class, 'store'])->name('factures.store');
+Route::get('/factures/edit/{facture}', [FacturesController::class, 'edit'])->name('factures.edit');
+Route::put('/factures/edit/{facture}', [FacturesController::class, 'update'])->name('factures.update');
+Route::get('/factures/delete/{facture}', [FacturesController::class, 'destroy'])->name('factures.destroy');
+
 Route::get('/reglements', [ReglementsController::class, 'index'])->name('reglements.index');
 
 
