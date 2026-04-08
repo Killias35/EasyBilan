@@ -37,7 +37,7 @@
                 <p>bet.construction.ouest@gmail.com</p>
             </div>
             <div class="logo">
-                <img src="resources/image_14065920_0.jpg" alt="Logo">
+                <img src="logo.jpg" alt="Logo">
             </div>
         </section>
 

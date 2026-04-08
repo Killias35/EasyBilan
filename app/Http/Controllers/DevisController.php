@@ -13,12 +13,13 @@ class DevisController extends Controller
     
     public function create(Request $request)
     {
-            $factureId = $request->query('facture_id');
+        $factureId = $request->query('facture_id');
 
         // Si absent → redirection avec paramètre
         if (!$factureId) {
+            $factureId = Facture::first()->id;
             return redirect()->route('devis.create', [
-                'facture_id' => 1
+                'facture_id' => $factureId
             ]);
         }
         $facture = Facture::with('client', 'chantier')->find($factureId);
