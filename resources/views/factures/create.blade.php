@@ -28,29 +28,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                {{-- Client --}}
+                {{-- Devis --}}
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Client</label>
-                    <select name="id_client" class="mt-1 w-full border rounded-lg px-3 py-2">
-                        <option value="">-- Sélectionner un client --</option>
-                        @foreach($clients as $client)
-                            <option value="{{ $client->id }}"
-                                {{ old('id_client') == $client->id ? 'selected' : '' }}>
-                                {{ $client->nom_client }}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-
-                {{-- Chantier --}}
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Chantier</label>
-                    <select name="id_chantier" class="mt-1 w-full border rounded-lg px-3 py-2">
-                        <option value="">-- Sélectionner un chantier --</option>
-                        @foreach($chantiers as $chantier)
-                            <option value="{{ $chantier->id }}"
-                                {{ old('id_chantier') == $chantier->id ? 'selected' : '' }}>
-                                {{ $chantier->nom_chantier }}
+                    <label class="block text-sm font-medium text-gray-700">Devis</label>
+                    <select name="id_devis"
+                        class="mt-1 w-full border rounded-lg px-3 py-2" required>
+                        <option value="">-- Sélectionner un devis --</option>
+                        @foreach($devis as $devi)
+                            <option value="{{ $devi->id }}"
+                                {{ old('id_devis') == $devi->id ? 'selected' : '' }}>
+                                #{{ $devi->id }} {{ $devi->client->nom_client }}
                             </option>
                         @endforeach
                     </select>

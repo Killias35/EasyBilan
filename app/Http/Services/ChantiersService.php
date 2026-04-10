@@ -8,10 +8,10 @@ use App\Models\Chantier;
 
 class ChantiersService
 {
-    public static function create($id_client, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur)
+    public static function create($id_devis, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur)
     {
         $chantier = Chantier::create([
-            'id_client' => $id_client,
+            'id_devis' => $id_devis,
             'nom_chantier' => $nom_chantier,
             'adresse_chantier' => $adresse_chantier,
             'code_postal_chantier' => $code_postal_chantier,
@@ -21,10 +21,10 @@ class ChantiersService
         return $chantier;
     }
 
-    public static function update(Chantier $chantier, $id_client, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur)
+    public static function update(Chantier $chantier, $id_devis, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur)
     {
         $chantier->update([
-            'id_client' => $id_client,
+            'id_devis' => $id_devis,
             'nom_chantier' => $nom_chantier,
             'adresse_chantier' => $adresse_chantier,
             'code_postal_chantier' => $code_postal_chantier,

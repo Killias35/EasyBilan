@@ -29,16 +29,16 @@
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-                {{-- Client --}}
+                {{-- Devis --}}
                 <div>
-                    <label class="block text-sm font-medium text-gray-700">Client</label>
-                    <select name="id_client"
-                        class="mt-1 w-full border rounded-lg px-3 py-2">
-                        <option value="">-- Sélectionner un client --</option>
-                        @foreach($clients as $client)
-                            <option value="{{ $client->id }}"
-                                {{ old('id_client', $chantier->id_client) == $client->id ? 'selected' : '' }}>
-                                {{ $client->nom_client }}
+                    <label class="block text-sm font-medium text-gray-700">Devis</label>
+                    <select name="id_devis"
+                        class="mt-1 w-full border rounded-lg px-3 py-2" required>
+                        <option value="{{ $chantier->devis->id }}"> #{{ $chantier->devis->id }} {{ $chantier->devis->client->nom_client }} </option>
+                        @foreach($devis as $devi)
+                            <option value="{{ $devi->id }}"
+                                {{ old('id_devis') == $devi->id ? 'selected' : '' }}>
+                                #{{ $devi->id }} {{ $devi->client->nom_client }}
                             </option>
                         @endforeach
                     </select>

@@ -16,6 +16,11 @@ class Devis extends Model
         'sous_total'
     ];
 
+    public function client()
+    {
+        return $this->belongsTo(Client::class, 'id_client');
+    }
+
     public function chantiers()
     {
         return $this->has(Chantier::class, 'id_devis');

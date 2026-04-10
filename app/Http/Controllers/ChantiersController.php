@@ -6,27 +6,27 @@ use Illuminate\Http\Request;
 
 use App\Http\Services\ChantiersService;
 use App\Models\Chantier;
-use App\Models\Client;
+use App\Models\Devis;
 
 class ChantiersController extends Controller
 {
     public function index()
     {
         $chantiers = Chantier::all();
-        $clients = Client::all();
-        return view('chantiers.index', compact('chantiers', 'clients'));
+        $devis = Devis::all();
+        return view('chantiers.index', compact('chantiers', 'devis'));
     }
 
     public function create()
     {  
-        $clients = Client::all();
-        return view('chantiers.create', compact('clients'));
+        $devis = Devis::all();
+        return view('chantiers.create', compact('devis'));
     }
 
     public function store(Request $request)
     {
-        $clients = Client::all();
-        $id_client = $request->input('id_client', null);
+        $devis = Devis::all();
+        $id_devis = $request->input('id_devis', null);
         $nom_chantier = $request->input('nom_chantier', null);
         $adresse_chantier = $request->input('adresse_chantier', null);
         $code_postal_chantier = $request->input('code_postal_chantier', null);
@@ -34,26 +34,26 @@ class ChantiersController extends Controller
         $conducteur = $request->input('conducteur', null);
 
         try {
-            $chantier = ChantiersService::create($id_client, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur);
-            return redirect()->route('chantiers.index', compact('clients'))->with('success', 'Le chantier a été créé avec succès');
+            $chantier = ChantiersService::create($id_devis, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur);
+            return redirect()->route('chantiers.index', compact('devis'))->with('success', 'Le chantier a été créé avec succès');
         } catch (\Exception $e) {
-            return redirect()->route('chantiers.create', compact('clients'))->with('error', $e->getMessage());
+            return redirect()->route('chantiers.create', compact('devis'))->with('error', $e->getMessage());
         }
     }
 
     public function edit(Request $request, $id)
     {
-        $clients = Client::all();
+        $devis = Devis::all();
         $chantier = Chantier::find($id);
-        return view('chantiers.edit', compact('chantier', 'clients'));
+        return view('chantiers.edit', compact('chantier', 'devis'));
     }
 
     public function update(Request $request, $id)
     {
         $chantier = Chantier::find($id);
-        $clients = Client::all();
+        $devis = Devis::all();
 
-        $id_client = $request->input('id_client', null);
+        $id_devis = $request->input('id_devis', null);
         $nom_chantier = $request->input('nom_chantier', null);
         $adresse_chantier = $request->input('adresse_chantier', null);
         $code_postal_chantier = $request->input('code_postal_chantier', null);
@@ -61,10 +61,10 @@ class ChantiersController extends Controller
         $conducteur = $request->input('conducteur', null);
 
         try {
-            $chantier = ChantiersService::update($chantier, $id_client, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur);
-            return redirect()->route('chantiers.index', compact('clients'))->with('success', 'Le chantier a été mis à jour avec succès');
+            $chantier = ChantiersService::update($chantier, $id_devis, $nom_chantier, $adresse_chantier, $code_postal_chantier, $ville_chantier, $conducteur);
+            return redirect()->route('chantiers.index', compact('devis'))->with('success', 'Le chantier a été mis à jour avec succès');
         } catch (\Exception $e) {
-            return redirect()->route('chantiers.edit', compact('clients'), $id)->with('error', $e->getMessage());
+            return redirect()->route('chantiers.edit', compact('devis'), $id)->with('error', $e->getMessage());
         }
     }
 

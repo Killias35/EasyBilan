@@ -4,7 +4,7 @@
 
 <script>
     function select(id) {
-        window.location.href='{{ route('devis.create') }}?facture_id=' + id;
+        window.location.href='{{ route('export.create') }}?facture_id=' + id;
     }
 </script>
 
@@ -47,7 +47,7 @@
         {{-- Bouton téléchargement --}}
         <div class="text-right">
             <a
-                href="{{route('devis.download')}}?id={{ $facture->id}}"
+                href="{{route('export.download')}}?id={{ $facture->id}}"
                 type="button"
                 target="_blank"
                 class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white text-sm font-medium rounded-md hover:bg-indigo-700 transition"

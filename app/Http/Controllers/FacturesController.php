@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Services\FacturesService;
 
-use App\Models\Chantier;
-use App\Models\Client;
+use App\Models\Devis;
 use App\Models\Facture;
 
 class FacturesController extends Controller
@@ -15,25 +14,20 @@ class FacturesController extends Controller
     public function index()
     {
         $factures = Facture::all();
-        $clients = Client::all();
-        $chantiers = Chantier::all();
-        return view('factures.index', compact('factures', 'clients', 'chantiers'));
+        return view('factures.index', compact('factures'));
     }
 
     public function create()
     {
-        $clients = Client::all();
-        $chantiers = Chantier::all();
-        return view('factures.create', compact('clients', 'chantiers'));
+        $devis = Devis::all();
+        return view('factures.create', compact('devis'));
     }
 
     public function store(Request $request)
     {
-        $clients = Client::all();
-        $chantiers = Chantier::all();
+        $devis = Devis::all();
 
-        $id_client = $request->input('id_client', null);
-        $id_chantier = $request->input('id_chantier', null);
+        $id_devis = $request->input('id_devis', null);
         $numero_situation = $request->input('numero_situation', null);
         $pv_numero = $request->input('pv_numero', null);
         $date_facture = $request->input('date_facture', null);
@@ -43,29 +37,26 @@ class FacturesController extends Controller
         $affacturage = $request->input('affacturage', null);
 
         try {
-            $facture = FacturesService::create($id_client, $id_chantier, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
-            return redirect()->route('factures.index', compact('clients', 'chantiers'))->with('success', 'La facture a été créée avec succès');
+            $facture = FacturesService::create($id_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
+            return redirect()->route('factures.index', compact('devis'))->with('success', 'La facture a été créée avec succès');
         } catch (\Exception $e) {
-            return redirect()->route('factures.create', compact('clients', 'chantiers'))->with('error', $e->getMessage());
+            return redirect()->route('factures.create', compact('devis'))->with('error', $e->getMessage());
         }
     }
 
     public function edit($id)
     {
         $facture = Facture::find($id);
-        $clients = Client::all();
-        $chantiers = Chantier::all();
-        return view('factures.edit', compact('facture', 'clients', 'chantiers'));
+        $devis = Devis::all();
+        return view('factures.edit', compact('facture', 'devis'));
     }
 
     public function update(Request $request, $id)
     {
         $facture = Facture::find($id);
-        $clients = Client::all();
-        $chantiers = Chantier::all();
+        $devis = Devis::all();
 
-        $id_client = $request->input('id_client', null);
-        $id_chantier = $request->input('id_chantier', null);
+        $id_devis = $request->input('id_devis', null);
         $numero_situation = $request->input('numero_situation', null);
         $pv_numero = $request->input('pv_numero', null);
         $date_facture = $request->input('date_facture', null);
@@ -75,10 +66,10 @@ class FacturesController extends Controller
         $affacturage = $request->input('affacturage', null);
 
         try {
-            $facture = FacturesService::update($facture, $id_client, $id_chantier, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
-            return redirect()->route('factures.index', compact('clients', 'chantiers'))->with('success', 'La facture a été mis à jour avec succès');
+            $facture = FacturesService::update($facture, $id_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
+            return redirect()->route('factures.index', compact('devis'))->with('success', 'La facture a été mis à jour avec succès');
         } catch (\Exception $e) {
-            return redirect()->route('factures.edit', compact('clients', 'chantiers'), $id)->with('error', $e->getMessage());
+            return redirect()->route('factures.edit', compact('devis'), $id)->with('error', $e->getMessage());
         }
     }
 

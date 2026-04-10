@@ -9,6 +9,7 @@ use App\Http\Controllers\ChantiersController;
 use App\Http\Controllers\FacturesController;
 use App\Http\Controllers\ReglementsController;
 
+use App\Http\Controllers\ExportController;
 use App\Http\Controllers\DevisController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -19,6 +20,13 @@ Route::post('/clients/create', [ClientsController::class, 'store'])->name('clien
 Route::get('/clients/edit/{client}', [ClientsController::class, 'edit'])->name('clients.edit');
 Route::put('/clients/edit/{client}', [ClientsController::class, 'update'])->name('clients.update');
 Route::get('/clients/delete/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
+
+Route::get('/devis', [DevisController::class, 'index'])->name('devis.index');
+Route::get('/devis/create', [DevisController::class, 'create'])->name('devis.create');
+Route::post('/devis/create', [DevisController::class, 'store'])->name('devis.store');
+Route::get('/devis/edit/{client}', [DevisController::class, 'edit'])->name('devis.edit');
+Route::put('/devis/edit/{client}', [DevisController::class, 'update'])->name('devis.update');
+Route::get('/devis/delete/{client}', [DevisController::class, 'destroy'])->name('devis.destroy');
 
 Route::get('/chantiers', [ChantiersController::class, 'index'])->name('chantiers.index');
 Route::get('/chantiers/create', [ChantiersController::class, 'create'])->name('chantiers.create');
@@ -46,7 +54,7 @@ Route::get('/db/import', [ExcelController::class, 'show'])->name('excel.show');
 Route::post('/db/import/debug', [ExcelController::class, 'debug'])->name('excel.debug');
 Route::post('/db/import', [ExcelController::class, 'store'])->name('excel.upload');
 
-Route::get('/devis', [DevisController::class, 'create'])->name('devis.create');
-Route::post('/devis/upload', [DevisController::class, 'upload'])->name('devis.upload');
+Route::get('/export', [ExportController::class, 'create'])->name('export.create');
+Route::post('/export/upload', [ExportController::class, 'upload'])->name('export.upload');
 
-Route::get('/devis/download', [DevisController::class, 'downloadPdf'])->name('devis.download');
+Route::get('/export/download', [ExportController::class, 'downloadPdf'])->name('export.download');

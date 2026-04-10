@@ -34,8 +34,7 @@
             <thead class="bg-gray-100">
                 <tr>
                     <th class="px-4 py-3 text-sm text-gray-800">ID</th>
-                    <th class="px-4 py-3 text-sm text-gray-800">ID Client</th>
-                    <th class="px-4 py-3 text-sm text-gray-800">ID Chantier</th>
+                    <th class="px-4 py-3 text-sm text-gray-800">ID Devis</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Numero situation</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Numero Pv</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Date</th>
@@ -51,17 +50,9 @@
 
             <tbody>
                 @foreach ($factures as $facture)
-                    @php
-                        $client = $clients->where('id', $facture->id_client)->first();
-                        $chantier = $chantiers->where('id', $facture->id_chantier)->first();
-
-                        $nom_client = $client ? $client->nom_client : '';
-                        $nom_chantier = $chantier ? $chantier->nom_client : '';
-                    @endphp
                     <tr class="border-t hover:bg-gray-50">
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->id }}</td>
-                        <td class="px-4 py-3 text-sm text-gray-800">#{{ $facture->id_client }} {{ $nom_client }}</td>
-                        <td class="px-4 py-3 text-sm text-gray-800">#{{ $facture->id_chantier }} {{ $nom_chantier }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-800">#{{ $facture->id_devis }} {{ $facture->devis->client->nom_client }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->numero_situation }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->pv_numero }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->date_facture }}</td>
