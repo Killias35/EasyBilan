@@ -21,8 +21,8 @@ return new class extends Migration
             $table->integer('tva')->nullable();
 
             $table->timestamps();
-            $table->foreign('devis_id')->references('id')->on('devis');
-            $table->foreign('materiel_id')->references('id')->on('materiel');
+            $table->foreign('devis_id')->references('id')->on('devis')->cascadeOnDelete();
+            $table->foreign('materiel_id')->references('id')->on('materiel')->cascadeOnDelete();
         });
     }
 

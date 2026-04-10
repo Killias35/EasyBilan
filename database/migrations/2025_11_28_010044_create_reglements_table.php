@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
 
-            $table->foreign('id_facture')->references('id')->on('factures');
+            $table->foreign('id_facture')->references('id')->on('factures')->cascadeOnDelete();
         });
     }
 

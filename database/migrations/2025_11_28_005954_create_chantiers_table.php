@@ -23,7 +23,7 @@ return new class extends Migration
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
 
-            $table->foreign('id_devis')->references('id')->on('devis');
+            $table->foreign('id_devis')->references('id')->on('devis')->cascadeOnDelete();
         });
     }
 

@@ -34,11 +34,11 @@
                     <label class="block text-sm font-medium text-gray-700">Client</label>
                     <select name="id_client" required
                         class="mt-1 w-full border rounded-lg px-3 py-2">
-                        <option value="">-- Sélectionner un client --</option>
+                        <option value="{{ $devis->client->id }}"> #{{ $devis->client->id }} {{ $devis->client->nom_client }} </option>
                         @foreach($clients as $client)
                             <option value="{{ $client->id }}"
                                 {{ old('id_client') == $client->id ? 'selected' : '' }}>
-                                {{ $client->nom_client }}
+                                #{{ $client->id }} {{ $client->nom_client }}
                             </option>
                         @endforeach
                     </select>

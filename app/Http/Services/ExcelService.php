@@ -90,8 +90,8 @@ class ExcelService
                     $devis[] = [
                         "id" => $row["N° Chantier"] ?? null,
                         "id_client" => $row["N° Client"] ?? null,
-                        "date_devis" => null,
-                        "duree_validite" => null
+                        "date_devis" => date('Y-m-d'),
+                        "duree_validite" => date('Y-m-d')
                     ];
                     $chantiers[] = [
                         "id" => $row["N° Chantier"] ?? null,

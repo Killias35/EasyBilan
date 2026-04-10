@@ -15,14 +15,14 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_client');
             
-            $table->date('date_devis')->nullable();
-            $table->date('duree_validite')->nullable();
+            $table->date('date_devis')->nullable()->default(now());
+            $table->date('duree_validite')->nullable()->default(now());
 
             $table->decimal('sous_total', 12, 2)->nullable();   // auto
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
             
-            $table->foreign('id_client')->references('id')->on('clients');
+            $table->foreign('id_client')->references('id')->on('clients')->cascadeOnDelete();
         });
     }
 

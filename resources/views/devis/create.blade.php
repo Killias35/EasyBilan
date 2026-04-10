@@ -45,13 +45,13 @@
 
                 <div>
                     <label class="block text-sm font-medium text-gray-700">date_devis</label>
-                    <input type="date" name="date_devis" value="{{ old('date_devis') }}"
+                    <input type="date" name="date_devis" value="{{ old('date_devis', date('Y-m-d')) }}"
                         class="mt-1 w-full border rounded-lg px-3 py-2">
                 </div>
 
                 <div class="md:col-span-2">
                     <label class="block text-sm font-medium text-gray-700">duree_validite</label>
-                    <input type="date" name="duree_validite" value="{{ old('duree_validite') }}"
+                    <input type="date" name="duree_validite" value="{{ old('duree_validite', date('Y-m-d')) }}"
                         class="mt-1 w-full border rounded-lg px-3 py-2">
                 </div>
 
