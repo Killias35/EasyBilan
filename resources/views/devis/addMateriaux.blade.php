@@ -99,7 +99,8 @@
                             <div class="grid grid-cols-3 text-sm gap-2">
                                 <div>Qté : {{ $pivot->quantite }}</div>
                                 <div>Prix : {{ $pivot->prix ?? $materiau->prix }} <button type="button" class="text-sm" onclick="resetOveridePrix({{ $materiau->id }})">◉</button></div>
-                                <div>TVA : {{ $pivot->tva ?? $materiau->tva }} <button type="button" class="text-sm" onclick="resetOverideTva({{ $materiau->id }})">◉</button></div>
+                                <div>TVA : {{ $pivot->tva }} </div>
+                                <div>Sous devis : {{ $pivot->sous_devis }} </div>
                             </div>
 
                             <div class="grid grid-cols-3 gap-2">
@@ -123,7 +124,17 @@
                                     value="{{ $pivot->tva }}"
                                     placeholder="TVA override"
                                     class="border rounded px-2 py-1 text-sm">
-
+                                
+                                <input type="number"
+                                    id="materiaux[{{ $materiau->id }}][sous_devis]"
+                                    name="materiaux[{{ $materiau->id }}][sous_devis]"
+                                    value="{{ $pivot->sous_devis }}"
+                                    class="border rounded px-2 py-1 text-sm">
+                                <input type="number"
+                                    id="materiaux[{{ $materiau->id }}][true_price]"
+                                    name="materiaux[{{ $materiau->id }}][true_price]"
+                                    value="{{ $materiau->prix }}"
+                                    class="border rounded px-2 py-1 text-sm" hidden>
                             </div>
 
                         </div>
@@ -221,6 +232,7 @@
                 <input type="number" name="materiaux[${id}][quantite]" placeholder="Qté" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][prix]" placeholder="Prix override" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][tva]" placeholder="TVA override" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][sous_devis]" placeholder="1" value="1" class="border rounded px-2 py-1 text-sm mt-2">
             `;
 
             this.disabled = true;

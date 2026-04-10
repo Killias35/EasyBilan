@@ -43,11 +43,14 @@ class DevisService
 
     public static function syncMateriaux(Devis $devis, array $materiaux)
     {
+        $total_cost = 0;
         foreach ($materiaux as $materiauId => $data) {
 
             // Nettoyage des valeurs
             $quantite = $data['quantite'] ?? 0;
+            $quantite = $quantite < 0 ? 0 : $quantite;
 
+            $true_price = $data['true_price'] ?? 0;
             // priorité pivot > fallback null
             $prix = isset($data['prix']) && $data['prix'] !== ''
                 ? $data['prix']
@@ -57,15 +60,26 @@ class DevisService
                 ? $data['tva']
                 : null;
 
+            $sous_devis = isset($data['sous_devis']) && $data['sous_devis'] !== ''
+                ? $data['sous_devis']
+                : 1;
+
+            $total_cost += $prix != null ? $quantite * $prix : $quantite * $true_price;
+
             // sync sans écraser les autres relations
             $devis->materiaux()->syncWithoutDetaching([
                 $materiauId => [
                     'quantite' => $quantite,
                     'prix' => $prix,
                     'tva' => $tva,
+                    'sous_devis' => $sous_devis
                 ]
             ]);
         }
+
+        $devis->sous_total = $total_cost;
+        $devis->save();
+        return $devis;
     }
 
     public static function detachMateriaux(Devis $devis, int $materiaux)

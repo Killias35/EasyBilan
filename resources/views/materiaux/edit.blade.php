@@ -49,13 +49,6 @@
                         value="{{ old('prix', $materiel->prix) }}"
                         class="mt-1 w-full border rounded-lg px-3 py-2">
                 </div>
-
-                <div>
-                    <label class="block text-sm font-medium text-gray-700">Tva</label>
-                    <input type="number" step="0.01" name="tva"
-                        value="{{ old('tva', $materiel->tva) }}"
-                        class="mt-1 w-full border rounded-lg px-3 py-2">
-                </div>
             </div>
 
             <div class="mt-6 flex justify-end space-x-4">

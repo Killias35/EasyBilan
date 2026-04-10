@@ -39,7 +39,7 @@
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Durée validité</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Sous total</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Nombre Materiaux</th>
-                    <th class="px-4 py-3 text-sm font-medium text-gray-700">Ajouter Materiaux</th>
+                    <th class="px-4 py-3 text-sm font-medium text-gray-700">Modifier Materiaux</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Modifier</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Supprimer</th>
                 </tr>
@@ -57,7 +57,7 @@
                         <td class="text-sm">
                             <a href="{{ route('devis.addMateriaux', $devi->id) }}"
                             class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
-                                Ajouter Materiaux
+                                Materiaux
                             </a>
                         </td><td class="text-sm">
                             <a href="{{ route('devis.edit', $devi->id) }}"

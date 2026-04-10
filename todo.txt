@@ -1,5 +1,6 @@
 a revoir plus tard
 affacturage = numero_pv sinon rien
+
 ajouter sous_devis dans devis_materiaux (int simple)
 
 Depuis nom_chantier voir tout les devis du clients et ajouté sous_devis

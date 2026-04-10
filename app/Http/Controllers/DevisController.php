@@ -95,6 +95,7 @@ class DevisController extends Controller
         $request->validate([
             'materiau_id' => 'required|int',
         ]);
+
         try {
             DevisService::detachMateriaux($devis, $request->materiau_id);
             return back()->with('success', 'Matériaux supprimés du devis');
