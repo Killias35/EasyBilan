@@ -112,6 +112,7 @@
                                     class="border rounded px-2 py-1 text-sm">
 
                                 <input type="number"
+                                    step="0.01"
                                     id="materiaux[{{ $materiau->id }}][prix]"
                                     name="materiaux[{{ $materiau->id }}][prix]"
                                     value="{{ $pivot->prix }}"
@@ -119,6 +120,7 @@
                                     class="border rounded px-2 py-1 text-sm">
 
                                 <input type="number"
+                                    step="0.01"
                                     id="materiaux[{{ $materiau->id }}][tva]"
                                     name="materiaux[{{ $materiau->id }}][tva]"
                                     value="{{ $pivot->tva }}"
@@ -131,6 +133,7 @@
                                     value="{{ $pivot->sous_devis }}"
                                     class="border rounded px-2 py-1 text-sm">
                                 <input type="number"
+                                    step="0.01"
                                     id="materiaux[{{ $materiau->id }}][true_price]"
                                     name="materiaux[{{ $materiau->id }}][true_price]"
                                     value="{{ $materiau->prix }}"
@@ -174,7 +177,8 @@
                                         <button type="button"
                                             class="add-materiau bg-green-600 text-white text-sm px-3 py-1 rounded hover:bg-green-700"
                                             data-id="{{ $materiau->id }}"
-                                            data-nom="{{ $materiau->nom }}">
+                                            data-nom="{{ $materiau->nom }}"
+                                            data-true_price="{{ $materiau->prix }}">
                                             Ajouter
                                         </button>
                                     </div>
@@ -223,6 +227,7 @@
         btn.addEventListener('click', function () {
 
             let id = this.dataset.id;
+            let price = this.dataset.true_price;
             let parent = this.closest('.materiau-available');
 
             // inject form inputs into main form
@@ -230,9 +235,10 @@
 
             container.innerHTML = `
                 <input type="number" name="materiaux[${id}][quantite]" placeholder="Qté" class="border rounded px-2 py-1 text-sm mt-2">
-                <input type="number" name="materiaux[${id}][prix]" placeholder="Prix override" class="border rounded px-2 py-1 text-sm mt-2">
-                <input type="number" name="materiaux[${id}][tva]" placeholder="TVA override" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][prix]" step="0.01" placeholder="Prix override" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][tva]" step="0.01" placeholder="TVA override" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][sous_devis]" placeholder="1" value="1" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][true_price]" step="0.01" value="${price}" class="border rounded px-2 py-1 text-sm mt-2" hidden>
             `;
 
             this.disabled = true;

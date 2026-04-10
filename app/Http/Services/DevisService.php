@@ -64,7 +64,7 @@ class DevisService
                 ? $data['sous_devis']
                 : 1;
 
-            $total_cost += $prix != null ? $quantite * $prix : $quantite * $true_price;
+                $total_cost += $prix != null ? $quantite * $prix : $quantite * $true_price;
 
             // sync sans écraser les autres relations
             $devis->materiaux()->syncWithoutDetaching([
@@ -84,6 +84,16 @@ class DevisService
 
     public static function detachMateriaux(Devis $devis, int $materiaux)
     {
+        $total_cost = 0;
+        foreach($devis->materiaux as $materiau) {
+            if ($materiau->id == $materiaux) {
+                continue;
+            }
+            $total_cost += $materiau->pivot->prix != null ? $materiau->pivot->quantite * $materiau->pivot->prix : $materiau->pivot->quantite * $materiau->prix;
+        }
+        
+        $devis->sous_total = $total_cost;
+        $devis->save();
         $devis->materiaux()->detach($materiaux);
     }
 }
