@@ -1,16 +1,12 @@
-crée table devis et ajout de devis
-chantier lié a devis
-facture lié a devis
-
-ajout de materiaux pour un devis (et groupe de materiaux)
-materiaux:
-    -unité
-    -prix
-    -quantité
-    -tva
-    -prix total ht (calculé auto)
-
-
 a revoir plus tard
 affacturage = numero_pv sinon rien
+ajouter sous_devis dans devis_materiaux (int simple)
 
+Depuis nom_chantier voir tout les devis du clients et ajouté sous_devis
+
+terminer création facture a imprimer
+lors de création facture a imprimer, choisir quels materiaux facturé et a combien de %, 
+detecter combien il reste a facturer
+
+dans création materieau, changer text
+changer ajouter materiaux text dans devis
