@@ -15,9 +15,9 @@ return new class extends Migration
             $table->id();
             $table->foreignId('devis_id');
             $table->foreignId('materiel_id');
-            $table->integer('quantite');
-            $table->integer('prix');
-            $table->integer('tva');
+            $table->integer('quantite')->default(1);
+            $table->integer('prix')->nullable();
+            $table->integer('tva')->nullable();
 
             $table->timestamps();
             $table->foreign('devis_id')->references('id')->on('devis');

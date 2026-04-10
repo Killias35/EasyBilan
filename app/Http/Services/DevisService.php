@@ -41,4 +41,35 @@ class DevisService
         return $devis;
     }
 
+    public static function syncMateriaux(Devis $devis, array $materiaux)
+    {
+        foreach ($materiaux as $materiauId => $data) {
+
+            // Nettoyage des valeurs
+            $quantite = $data['quantite'] ?? 0;
+
+            // priorité pivot > fallback null
+            $prix = isset($data['prix']) && $data['prix'] !== ''
+                ? $data['prix']
+                : null;
+
+            $tva = isset($data['tva']) && $data['tva'] !== ''
+                ? $data['tva']
+                : null;
+
+            // sync sans écraser les autres relations
+            $devis->materiaux()->syncWithoutDetaching([
+                $materiauId => [
+                    'quantite' => $quantite,
+                    'prix' => $prix,
+                    'tva' => $tva,
+                ]
+            ]);
+        }
+    }
+
+    public static function detachMateriaux(Devis $devis, int $materiaux)
+    {
+        $devis->materiaux()->detach($materiaux);
+    }
 }
