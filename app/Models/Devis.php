@@ -1,0 +1,28 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Devis extends Model
+{
+    protected $table = 'devis';
+    public $timestamps = true;
+
+    protected $fillable = [
+        'id_client',
+        'date_devis',
+        'duree_validite',
+        'sous_total'
+    ];
+
+    public function chantiers()
+    {
+        return $this->has(Chantier::class, 'id_devis');
+    }
+
+    public function factures()
+    {
+        return $this->hasMany(Facture::class, 'id_devis');
+    }
+}

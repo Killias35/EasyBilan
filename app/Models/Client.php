@@ -20,13 +20,9 @@ class Client extends Model
         'rcs'
     ];
 
-    public function chantiers()
+    public function devis()
     {
-        return $this->hasMany(Chantier::class, 'id_client');
+        return $this->hasMany(Devis::class, 'id_client');
     }
 
-    public function factures()
-    {
-        return $this->hasMany(Facture::class, 'id_client');
-    }
 }

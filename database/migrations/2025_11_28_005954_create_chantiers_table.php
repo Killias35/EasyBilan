@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('chantiers', function (Blueprint $table) {
             $table->integer('id')->primary()->autoIncrement();
-            $table->integer('id_client');
+            $table->integer('id_devis');
             $table->string('nom_chantier', 255)->nullable();
             $table->string('adresse_chantier', 255)->nullable();
             $table->string('code_postal_chantier', 20)->nullable();
@@ -22,7 +22,7 @@ return new class extends Migration
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
 
-            $table->foreign('id_client')->references('id')->on('clients');
+            $table->foreign('id_devis')->references('id')->on('devis');
         });
     }
 

@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('factures', function (Blueprint $table) {
             $table->integer('id')->primary()->autoIncrement();
-            $table->integer('id_client');
-            $table->integer('id_chantier')->nullable()->constrained()->nullOnDelete();
+            $table->integer('id_devis');
+            $table->string('description', 255)->nullable();
             $table->string('numero_situation', 50)->nullable();
             $table->string('pv_numero', 50)->nullable();
             $table->date('date_facture')->nullable();
@@ -25,8 +25,7 @@ return new class extends Migration
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
 
-            $table->foreign('id_client')->references('id')->on('clients');
-            $table->foreign('id_chantier')->references('id')->on('chantiers');
+            $table->foreign('id_devis')->references('id')->on('devis');
         });
     }
 

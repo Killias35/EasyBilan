@@ -9,6 +9,7 @@ use App\Models\Client;
 use App\Models\Chantier;
 use App\Models\Facture;
 use App\Models\Reglement;
+use App\Models\Devis;
 
 class ExcelService
 {
@@ -58,6 +59,8 @@ class ExcelService
             $data = self::readXlsx($path);
             $clients = [];
             $clientsId = [];
+            $devis = [];
+            $devisId = [];
             $chantiers = [];
             $chantiersId = [];
             $factures = [];
@@ -83,9 +86,16 @@ class ExcelService
 
                 // --- CHANTIER ---
                 if (!empty($row["N° Chantier"]) && !in_array($row["N° Chantier"], $chantiersId)) {
-                    $chantiers[] = [
+                    $id_chantier = $row["N° Chantier"];
+                    $devis[] = [
                         "id" => $row["N° Chantier"] ?? null,
                         "id_client" => $row["N° Client"] ?? null,
+                        "date_devis" => null,
+                        "duree_validite" => null
+                    ];
+                    $chantiers[] = [
+                        "id" => $row["N° Chantier"] ?? null,
+                        "id_devis" => $row["N° Chantier"] ?? null,
                         "nom_chantier" => $row["Nom Chantier"] ?? null,
                         "adresse_chantier" => $row["Adresse Chantier"] ?? null,
                         "code_postal_chantier" => $row["Code Postal Chantier"] ?? null,
@@ -114,8 +124,7 @@ class ExcelService
                     
                     $factures[] = [
                         "id" => $row["N° Facture"] ?? null,
-                        "id_client" => $row["N° Client"],
-                        "id_chantier" => $row["N° Chantier"],
+                        "id_devis" => $row["N° Chantier"] ?? null,
                         "numero_situation" => $row["N°Situation"] ?? null,
                         "pv_numero" => $row["P.V. N°"] ?? null,
                         "date_facture" => $date,
@@ -146,6 +155,7 @@ class ExcelService
             return [
                 "success" => true,
                 "clients" => $clients,
+                "devis" => $devis,
                 "chantiers" => $chantiers,
                 "factures" => $factures,
                 "reglements" => $reglements,
@@ -166,6 +176,7 @@ class ExcelService
     public static function SeedData(array $data): array
     {
         $newClientsId = [];
+        $newDevisId = [];
         $newChantiersId = [];
         $newFacturesId = [];
         try{
@@ -175,11 +186,23 @@ class ExcelService
                 $clients[] = $client;
                 $newClientsId[$item['id']] = $client->id;
             }
+            $devis = [];
+            foreach ($data['devis'] ?? [] as $item) {
+                $devi = Devis::create([
+                    "id_client" => $newClientsId[$item['id_client']],
+                    "date_devis" => $item['date_devis'],
+                    "duree_validite" => $item['duree_validite'],
+                    "sous_total" => 0
+                ]);
+
+                $devis[] = $devi;
+                $newDevisId[$item['id']] = $devi->id;
+            }
 
             $chantiers = [];
             foreach ($data['chantiers'] ?? [] as $item) {
                 $chantier = Chantier::create([
-                        "id_client" => $newClientsId[$item['id_client']], 
+                        "id_devis" => $newDevisId[$item['id_devis']], 
                         "nom_chantier" => $item['nom_chantier'], 
                         "adresse_chantier" => $item['adresse_chantier'], 
                         "code_postal_chantier" => $item['code_postal_chantier'], 
@@ -192,13 +215,11 @@ class ExcelService
 
             $factures = [];
             foreach ($data['factures'] ?? [] as $item) {
-                if(!isset($item['id_client'])) {
+                if(!isset($item['id_devis'])) {
                     continue;
                 }
-                $id_chantier = isset($newChantiersId[$item['id_chantier']]) ? $newChantiersId[$item['id_chantier']] : null;
                 $facture = Facture::create([
-                    "id_client" => $newClientsId[$item['id_client']], 
-                    "id_chantier" => $id_chantier,
+                    "id_devis" => $newDevisId[$item['id_devis']], 
                     "numero_situation" => $item['numero_situation'], 
                     "pv_numero" => $item['pv_numero'], 
                     "date_facture" => $item['date_facture'], 
@@ -225,6 +246,7 @@ class ExcelService
             return [
                 "success" => true,
                 "clients" => $clients,
+                "devis" => $devis,
                 "chantiers" => $chantiers,
                 "factures" => $factures,
                 "reglements" => $reglements,
@@ -242,6 +264,7 @@ class ExcelService
                 ],
                 "data" => $data,
                 "newClientsId" => $newClientsId,
+                "newDevisId" => $newDevisId,
                 "newChantiersId" => $newChantiersId,
                 "newFacturesId" => $newFacturesId
             ];

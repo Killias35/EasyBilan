@@ -10,7 +10,7 @@ class Chantier extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'id_client',
+        'id_devis',
         'nom_chantier',
         'adresse_chantier',
         'code_postal_chantier',
@@ -18,13 +18,8 @@ class Chantier extends Model
         'conducteur'
     ];
 
-    public function client()
+    public function devis()
     {
-        return $this->belongsTo(Client::class, 'id_client');
-    }
-
-    public function factures()
-    {
-        return $this->hasMany(Facture::class, 'id_chantier');
+        return $this->belongsTo(Devis::class, 'id_devis');
     }
 }

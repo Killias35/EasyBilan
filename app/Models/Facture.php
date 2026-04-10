@@ -10,8 +10,7 @@ class Facture extends Model
     public $timestamps = true;
 
     protected $fillable = [
-        'id_client',
-        'id_chantier',
+        'id_devis',
         'numero_situation',
         'pv_numero',
         'date_facture',
@@ -21,14 +20,10 @@ class Facture extends Model
         'affacturage'
     ];
 
-    public function chantier()
-    {
-        return $this->belongsTo(Chantier::class, 'id_chantier');
-    }
 
-    public function client()
+    public function devis()
     {
-        return $this->belongsTo(Client::class, 'id_client');
+        return $this->belongsTo(Devis::class, 'id_devis');
     }
 
     public function reglements()

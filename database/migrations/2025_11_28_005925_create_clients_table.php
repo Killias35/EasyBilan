@@ -24,6 +24,8 @@ return new class extends Migration
             $table->date('created_at')->nullable();
             $table->date('updated_at')->nullable();
         });
+
+        DB::update("ALTER TABLE users AUTO_INCREMENT = 26001;");
     }
 
     public function down()
