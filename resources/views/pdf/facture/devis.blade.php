@@ -26,9 +26,9 @@
                         value="{{ $f->id }}"
                         @selected($f->id === $facture->id)
                     >
-                        Facture #{{ $f->id }} de {{ $f->client->nom_client }} 
+                        Facture #{{ $f->id }} de {{ $f->devis->client->nom_client }} 
                         @if ($f->chantier != null)
-                            pour chantier "{{ $f->chantier->nom_chantier }}"
+                            pour chantier "{{ $f->devis->chantier->nom_chantier }}"
                         @endif
                         du {{ $f->date_facture }}
                     </option>

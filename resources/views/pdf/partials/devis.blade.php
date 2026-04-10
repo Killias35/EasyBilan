@@ -27,6 +27,11 @@
         .note{text-align:center;font-size:12px;color:#666;margin-top:10px}
     </style>
 
+    @php
+        $chantier = $facture->devis->chantier;
+        $client = $facture->devis->client;
+    @endphp
+
     <div class="page">
         <section class="header">
             <div class="company">
@@ -50,7 +55,7 @@
                 <div>Date : {{ data_get($facture, 'today') }}</div>
                 <div>Numéro : {{ data_get($facture, 'id') }}</div>
                 <div>Échéance : {{ data_get($facture, 'echeance') }}</div>
-                <div>N° Client : {{ data_get($facture, 'id_client') }}</div>
+                <div>N° Devis : {{ data_get($facture, 'id_devis') }}</div>
             </div>
         </section>
 
@@ -60,28 +65,28 @@
             <div class="grid">
                 <div>
                     <strong>Nom :</strong>
-                    {{ data_get($facture, 'chantier.nom_chantier') }}
+                    {{ $chantier->nom_chantier }}
                 </div>
 
                 <div>
                     <strong>N° :</strong>
-                    {{ data_get($facture, 'id_chantier') }}
+                    {{ $chantier->id }}
                 </div>
 
                 <div>
                     <strong>Adresse :</strong>
-                    {{ data_get($facture, 'chantier.adresse_chantier') }}
+                    {{ $chantier->adresse_chantier }}
                 </div>
 
                 <div>
                     <strong>Ville :</strong>
-                    {{ data_get($facture, 'chantier.code_postal_chantier') }}
-                    {{ data_get($facture, 'chantier.ville_chantier') }}
+                    {{ $chantier->code_postal_chantier }}
+                    {{ $chantier->ville_chantier }}
                 </div>
 
                 <div>
                     <strong>Conducteur :</strong>
-                    {{ data_get($facture, 'chantier.conducteur') }}
+                    {{ $chantier->conducteur }}
                 </div>
             </div>
         </section>
@@ -91,34 +96,34 @@
 
             <div class="grid">
                 <div>
-                    <strong>Client :</strong>
-                    {{ data_get($facture, 'client.nom_client') }}
+                    <strong>client :</strong>
+                    {{ $client->nom_client }}
                 </div>
 
                 <div>
                     <strong>Téléphone :</strong>
-                    {{ data_get($facture, 'client.tel') }}
+                    {{ $client->tel }}
                 </div>
 
                 <div>
                     <strong>Adresse :</strong>
-                    {{ data_get($facture, 'client.adresse_client') }}
+                    {{ $client->adresse_client }}
                 </div>
 
                 <div>
                     <strong>Ville :</strong>
-                    {{ data_get($facture, 'client.code_postal_client') }}
-                    {{ data_get($facture, 'client.ville_client') }}
+                    {{ $client->code_postal_client }}
+                    {{ $client->ville_client }}
                 </div>
 
                 <div>
                     <strong>TVA Intra :</strong>
-                    {{ data_get($facture, 'client.tva_intra') }}
+                    {{ $client->tva_intra }}
                 </div>
 
                 <div>
                     <strong>RCS :</strong>
-                    {{ data_get($facture, 'client.rcs') }}
+                    {{ $client->rcs }}
                 </div>
             </div>
         </section>

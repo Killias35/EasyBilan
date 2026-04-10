@@ -18,12 +18,12 @@ class ExportController extends Controller
         // Si absent → redirection avec paramètre
         if (!$factureId) {
             $factureId = Facture::first()->id;
-            return redirect()->route('devis.create', [
+            return redirect()->route('export.create', [
                 'facture_id' => $factureId
             ]);
         }
-        $facture = Facture::with('client', 'chantier')->find($factureId);
-        $factures = Facture::orderBy('id')->with('client', 'chantier')->get();
+        $facture = Facture::with('devis')->find($factureId);
+        $factures = Facture::orderBy('id')->with('devis')->get();
         if ($facture === null) {
             return redirect()->route('home');
         }
@@ -57,11 +57,11 @@ class ExportController extends Controller
         $id = $request->query('id');
 
         // Récupérer le devis
-        $facture = Facture::with('client', 'chantier')->find($id);
-        $factures = Facture::orderBy('id')->with('client', 'chantier')->get();
+        $facture = Facture::find($id);
+        $factures = Facture::orderBy('id')->get();
 
         // Générer le PDF à partir de la vue
-        $pdf = PDF::loadView('pdf.partials.devis', compact('facture', 'factures'));
+        $pdf = PDF::loadView('pdf.partials.devis', compact("facture", "factures"));
 
         // Télécharger le PDF
         return $pdf->download('devis_'.$facture->id.'.pdf');

@@ -21,9 +21,9 @@ class Devis extends Model
         return $this->belongsTo(Client::class, 'id_client');
     }
 
-    public function chantiers()
+    public function chantier()
     {
-        return $this->has(Chantier::class, 'id_devis');
+        return $this->hasOne(Chantier::class, 'id_devis');
     }
 
     public function factures()
