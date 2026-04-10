@@ -58,6 +58,7 @@
                         <li><a href="{{ route('clients.index') }}" class="text-gray-600 hover:text-gray-900">Clients</a></li>
                         <li><a href="{{ route('devis.index') }}" class="text-gray-600 hover:text-gray-900">Devis</a></li>
                         <li><a href="{{ route('chantiers.index') }}" class="text-gray-600 hover:text-gray-900">Chantiers</a></li>
+                        <li><a href="{{ route('materiaux.index') }}" class="text-gray-600 hover:text-gray-900">Materiaux</a></li>
                         <li><a href="{{ route('factures.index') }}" class="text-gray-600 hover:text-gray-900">Factures</a></li>
                         <li><a href="{{ route('reglements.index') }}" class="text-gray-600 hover:text-gray-900">Règlements</a></li>
                     </ul>

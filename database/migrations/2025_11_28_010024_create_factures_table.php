@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('factures', function (Blueprint $table) {
-            $table->integer('id')->primary()->autoIncrement();
-            $table->integer('id_devis');
+            $table->id();
+            $table->foreignId('id_devis');
             $table->string('description', 255)->nullable();
             $table->string('numero_situation', 50)->nullable();
             $table->string('pv_numero', 50)->nullable();

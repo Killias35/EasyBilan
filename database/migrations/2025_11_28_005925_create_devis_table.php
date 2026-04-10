@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('devis', function (Blueprint $table) {
-            $table->integer('id')->primary()->autoIncrement();
-            $table->integer('id_client');
+            $table->id();
+            $table->foreignId('id_client');
             
             $table->date('date_devis')->nullable();
             $table->date('duree_validite')->nullable();

@@ -12,8 +12,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('chantiers', function (Blueprint $table) {
-            $table->integer('id')->primary()->autoIncrement();
-            $table->integer('id_devis');
+            $table->id();
+            $table->foreignId('id_devis');
+            $table->string('id_chantier_externe', 50)->nullable();
             $table->string('nom_chantier', 255)->nullable();
             $table->string('adresse_chantier', 255)->nullable();
             $table->string('code_postal_chantier', 20)->nullable();

@@ -5,12 +5,14 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Services\ExcelService;
 use App\Models\Chantier;
+use App\Http\Controllers\DatabaseController;
 
 class ExcelController extends Controller
 {
     public static function show()
     {
-        return view('upload_excel');
+        $lastBackup  = DatabaseController::getLastDate();
+        return view('upload_excel', compact('lastBackup'));
     }
 
     public static function store(Request $request)

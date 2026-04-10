@@ -30,4 +30,9 @@ class Devis extends Model
     {
         return $this->hasMany(Facture::class, 'id_devis');
     }
+
+    public function materiaux()
+    {
+        return $this->belongsToMany(Materiau::class)->withPivot('quantite', 'prix', 'tva')->withTimestamps();
+    }
 }

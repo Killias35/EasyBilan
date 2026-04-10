@@ -12,8 +12,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reglements', function (Blueprint $table) {
-            $table->increments('id')->primary()->autoIncrement();
-            $table->integer('id_facture');
+            $table->id();
+            $table->foreignId('id_facture');
             $table->date('date_reglement')->nullable();
             $table->decimal('montant_regle', 12, 2)->nullable();
             $table->date('created_at')->nullable();

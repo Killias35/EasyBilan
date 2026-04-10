@@ -49,8 +49,41 @@
         </div>
     </form>
 
-    <div id="responseBox" class="mt-4 hidden p-4 rounded-lg border"></div>
+    @if (session('success'))
+        <div id="responseBox" class="mt-4 p-4 rounded-lg border">{{ session('success') }}</div>
+    @else
+        <div id="responseBox" class="hidden mt-4 p-4 rounded-lg border"></div>
+    @endif
 
+    <div class="grid grid-cols-2 gap-3 mt-6">
+        <form method="POST" action="/backup" class="flex justify-center">
+            @csrf
+            <button type="submit"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-lg shadow-sm
+                hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500">
+                Sauvegarder données
+            </button>
+        </form>
+
+        <form method="POST" action="/restore" class="flex justify-center">
+            @csrf
+            <button type="submit"
+                class="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white text-sm font-semibold rounded-lg shadow-sm
+                hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500">
+                Restaurer données
+            </button>
+        </form>
+    </div>
+
+    <div class="mt-6 text-center">
+        <h2>
+            @if($lastBackup)
+                Dernière sauvegarde : {{ $lastBackup }}
+            @else
+                Aucune sauvegarde trouvée
+            @endif
+        </h2>
+    </div>
 </div>
 @endsection
 
