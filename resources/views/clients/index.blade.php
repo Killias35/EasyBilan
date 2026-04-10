@@ -50,7 +50,7 @@
             <tbody>
                 @foreach ($clients as $client)
                     <tr class="border-t hover:bg-gray-50">
-                        <td class="px-4 py-3 text-sm text-gray-800">{{ $client->id }}</td>
+                        <td class="px-4 py-3 text-sm text-blue-800"><a href="{{ route('stats.client_devis', $client->id) }}">{{ $client->id }}</a></td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $client->civilite }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $client->nom_client }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $client->adresse_client }}</td>

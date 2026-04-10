@@ -1,9 +1,9 @@
 a revoir plus tard
 affacturage = numero_pv sinon rien
 
-ajouter sous_devis dans devis_materiaux (int simple)
+X ajouter sous_devis dans devis_materiaux (int simple)
 
-Depuis nom_chantier voir tout les devis du clients et ajouté sous_devis
+X Depuis nom_chantier voir tout les devis du clients et ajouté sous_devis
 
 terminer création facture a imprimer
 lors de création facture a imprimer, choisir quels materiaux facturé et a combien de %, 

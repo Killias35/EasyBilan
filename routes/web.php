@@ -13,6 +13,7 @@ use App\Http\Controllers\ReglementsController;
 use App\Http\Controllers\ExportController;
 use App\Http\Controllers\DevisController;
 use App\Http\Controllers\DatabaseController;
+use App\Http\Controllers\StatistiqueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -60,6 +61,10 @@ Route::post('/reglements/create', [ReglementsController::class, 'store'])->name(
 Route::get('/reglements/edit/{reglement}', [ReglementsController::class, 'edit'])->name('reglements.edit');
 Route::put('/reglements/edit/{reglement}', [ReglementsController::class, 'update'])->name('reglements.update');
 Route::get('/reglements/delete/{reglement}', [ReglementsController::class, 'destroy'])->name('reglements.destroy');
+
+// Stats
+Route::get('/stats/client_devis/{client}', [StatistiqueController::class, 'clientDevis'])->name('stats.client_devis');
+
 
 
 Route::get('/db/import', [ExcelController::class, 'show'])->name('excel.show');
