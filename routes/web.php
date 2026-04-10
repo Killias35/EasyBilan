@@ -24,6 +24,7 @@ Route::put('/clients/edit/{client}', [ClientsController::class, 'update'])->name
 Route::get('/clients/delete/{client}', [ClientsController::class, 'destroy'])->name('clients.destroy');
 
 Route::get('/devis', [DevisController::class, 'index'])->name('devis.index');
+Route::get('/devis/addMateriaux', [DevisController::class, 'addMateriaux'])->name('devis.addMateriaux');
 Route::get('/devis/create', [DevisController::class, 'create'])->name('devis.create');
 Route::post('/devis/create', [DevisController::class, 'store'])->name('devis.store');
 Route::get('/devis/edit/{client}', [DevisController::class, 'edit'])->name('devis.edit');

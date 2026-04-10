@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('devis_materiaux', function (Blueprint $table) {
+        Schema::create('materiel', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('devis_id');
-            $table->foreignId('materiaux_id');
-            $table->integer('quantite');
+            $table->string('nom');
+            $table->string('description');
             $table->integer('prix');
             $table->integer('tva');
-
             $table->timestamps();
-            $table->foreign('devis_id')->references('id')->on('devis');
-            $table->foreign('materiaux_id')->references('id')->on('materiaux');
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('devis_materiaux');
+        Schema::dropIfExists('materiel');
     }
 };

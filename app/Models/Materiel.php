@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Materiel extends Model
 {
-    protected $table = 'materiaux';
+    protected $table = 'materiel';
     public $timestamps = true;
 
     protected $fillable = [

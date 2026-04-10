@@ -38,6 +38,8 @@
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Date devis</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Durée validité</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Sous total</th>
+                    <th class="px-4 py-3 text-sm font-medium text-gray-700">Nombre Materiaux</th>
+                    <th class="px-4 py-3 text-sm font-medium text-gray-700">Ajouter Materiaux</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Modifier</th>
                     <th class="px-4 py-3 text-sm font-medium text-gray-700">Supprimer</th>
                 </tr>
@@ -51,7 +53,13 @@
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $devi->date_devis }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $devi->duree_validite }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $devi->sous_total }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-800">{{ count($devi->materiaux) }}</td>
                         <td class="text-sm">
+                            <a href="{{ route('devis.addMateriaux', $devi->id) }}"
+                            class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                                Ajouter Materiaux
+                            </a>
+                        </td><td class="text-sm">
                             <a href="{{ route('devis.edit', $devi->id) }}"
                             class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
                                 Modifier
