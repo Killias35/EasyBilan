@@ -125,8 +125,8 @@ class ExcelService
                     $factures[] = [
                         "id" => $row["N° Facture"] ?? null,
                         "id_devis" => $row["N° Chantier"] ?? null,
-                        "numero_situation" => $row["N°Situation"] ?? null,
-                        "pv_numero" => $row["P.V. N°"] ?? null,
+                        "numero_situation" => self::toNumber($row["N°Situation"] ?? null),
+                        "pv_numero" => self::toNumber($row["P.V. N°"] ?? null),
                         "date_facture" => $date,
                         "sous_total" => self::toNumber($row["Sous-total"] ?? null),
                         "montant_facture" => self::toNumber($row["Montant Facturé"] ?? null),
@@ -190,8 +190,8 @@ class ExcelService
             foreach ($data['devis'] ?? [] as $item) {
                 $devi = Devis::create([
                     "id_client" => $newClientsId[$item['id_client']],
-                    "date_devis" => $item['date_devis'],
-                    "duree_validite" => $item['duree_validite'],
+                    "date_devis" => now(),
+                    "duree_validite" => now(),
                     "sous_total" => 0
                 ]);
 

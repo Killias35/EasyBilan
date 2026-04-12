@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('devis_id');
             $table->foreignId('materiel_id');
             $table->integer('sous_devis')->default(1);
+            $table->integer('situation')->default(1);
             $table->integer('quantite')->default(1);
             $table->decimal('prix', 12, 2)->nullable();
             $table->decimal('tva', 12, 2)->nullable();

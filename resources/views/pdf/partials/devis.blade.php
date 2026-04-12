@@ -1,4 +1,4 @@
-@if (isset($facture) && isset($factures) && $facture != null && $factures != null)
+@if (isset($devi) && isset($devis) && $devi != null && $devis != null)
     <style>
         .page{max-width:100%;margin:auto;background:#fff;padding:40px;border-radius:6px;box-shadow:0 0 20px rgba(0,0,0,.08)}
         .header{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:4px solid #283592;padding-bottom:20px;margin-bottom:30px}
@@ -28,8 +28,8 @@
     </style>
 
     @php
-        $chantier = $facture->devis->chantier;
-        $client = $facture->devis->client;
+        $chantier = $devi->chantier;
+        $client = $devi->client;
     @endphp
 
     <div class="page">
@@ -48,14 +48,14 @@
 
         <section class="title">
             <h2>
-                FACTURE de Situation n° {{ data_get($facture, 'numero_situation', '#')}}
+                FACTURE de Situation n° {{ data_get($devi, 'numero_situation', '#')}}
             </h2>
 
             <div class="meta">
-                <div>Date : {{ data_get($facture, 'today') }}</div>
-                <div>Numéro : {{ data_get($facture, 'id') }}</div>
-                <div>Échéance : {{ data_get($facture, 'echeance') }}</div>
-                <div>N° Devis : {{ data_get($facture, 'id_devis') }}</div>
+                <div>Date : {{ data_get($devi, 'today') }}</div>
+                <div>Numéro : {{ data_get($devi, 'id') }}</div>
+                <div>Échéance : {{ data_get($devi, 'echeance') }}</div>
+                <div>N° Devis : {{ data_get($devi, 'id_devis') }}</div>
             </div>
         </section>
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Services\ExportService;
+use App\Models\Devis;
 use App\Models\Facture;
 use PDF;
 
@@ -13,16 +14,27 @@ class ExportController extends Controller
     
     public function create(Request $request)
     {
+        $devisId = $request->query('devis_id');
         $factureId = $request->query('facture_id');
 
-        // Si absent → redirection avec paramètre
-        if (!$factureId) {
-            $factureId = Facture::first()->id;
+        if (!$devisId) {
+            $devisId = Devis::first()->id;
         }
-        $facture = Facture::with('devis')->find($factureId);
-        $factures = Facture::orderBy('id')->with('devis')->get();
+        $devi = Devis::with('chantier', 'client', 'factures')->find($devisId);
+        $devis = Devis::orderBy('id')->with('chantier', 'client', 'factures')->get();
 
-        return view('pdf.facture.devis', compact('facture', 'factures'));
+        $factures = Facture::where('id_devis', $devisId)->orderBy('id')->get();
+        if (!$factureId && $factures->count() > 0) {
+            $facture = $factures->first();
+        }
+        else if ($factureId) {
+            $facture = $factures->find($factureId);
+        }
+        else{
+            $facture = null;
+        }
+        
+        return view('pdf.devis.create', compact('devi', 'devis', 'factures', 'facture'));
     }
 
     public function downloadPdf(Request $request)

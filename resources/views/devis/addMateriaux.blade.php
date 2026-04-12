@@ -101,6 +101,7 @@
                                 <div>Prix : {{ $pivot->prix ?? $materiau->prix }} <button type="button" class="text-sm" onclick="resetOveridePrix({{ $materiau->id }})">◉</button></div>
                                 <div>TVA : {{ $pivot->tva }} </div>
                                 <div>Sous devis : {{ $pivot->sous_devis }} </div>
+                                <div>Situation : {{ $pivot->situation }} </div>
                             </div>
 
                             <div class="grid grid-cols-3 gap-2">
@@ -131,6 +132,11 @@
                                     id="materiaux[{{ $materiau->id }}][sous_devis]"
                                     name="materiaux[{{ $materiau->id }}][sous_devis]"
                                     value="{{ $pivot->sous_devis }}"
+                                    class="border rounded px-2 py-1 text-sm">
+                                <input type="number"
+                                    id="materiaux[{{ $materiau->id }}][situation]"
+                                    name="materiaux[{{ $materiau->id }}][situation]"
+                                    value="{{ $pivot->situation }}"
                                     class="border rounded px-2 py-1 text-sm">
                                 <input type="number"
                                     step="0.01"
@@ -184,7 +190,7 @@
                                     </div>
 
                                     {{-- hidden inputs injected via JS --}}
-                                    <div class="hidden-fields"></div>
+                                    <div class="hidden-fields grid grid-cols-3 mt-2"></div>
 
                                 </div>
 
@@ -237,7 +243,8 @@
                 <input type="number" name="materiaux[${id}][quantite]" placeholder="Qté" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][prix]" step="0.01" placeholder="Prix override" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][tva]" step="0.01" placeholder="TVA override" class="border rounded px-2 py-1 text-sm mt-2">
-                <input type="number" name="materiaux[${id}][sous_devis]" placeholder="1" value="1" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][sous_devis]" placeholder="sous devis" class="border rounded px-2 py-1 text-sm mt-2">
+                <input type="number" name="materiaux[${id}][situation]" placeholder="numero situation" class="border rounded px-2 py-1 text-sm mt-2">
                 <input type="number" name="materiaux[${id}][true_price]" step="0.01" value="${price}" class="border rounded px-2 py-1 text-sm mt-2" hidden>
             `;
 

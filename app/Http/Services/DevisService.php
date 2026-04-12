@@ -65,6 +65,7 @@ class DevisService
                 : 1;
 
                 $total_cost += $prix != null ? $quantite * $prix : $quantite * $true_price;
+            $situation = $data['situation'] ?? 1;
 
             // sync sans écraser les autres relations
             $devis->materiaux()->syncWithoutDetaching([
@@ -72,7 +73,8 @@ class DevisService
                     'quantite' => $quantite,
                     'prix' => $prix,
                     'tva' => $tva,
-                    'sous_devis' => $sous_devis
+                    'sous_devis' => $sous_devis,
+                    'situation' => $situation
                 ]
             ]);
         }

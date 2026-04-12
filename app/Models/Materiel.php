@@ -17,6 +17,6 @@ class Materiel extends Model
 
     public function devis()
     {
-        return $this->belongsToMany(Devis::class)->withPivot('quantite', 'prix', 'tva', 'sous_devis')->withTimestamps();
+        return $this->belongsToMany(Devis::class)->withPivot('quantite', 'prix', 'tva', 'sous_devis', 'situation')->withTimestamps();
     }
 }

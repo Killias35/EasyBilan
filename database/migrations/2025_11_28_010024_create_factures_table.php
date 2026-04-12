@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('id_devis');
             $table->string('description', 255)->nullable();
-            $table->string('numero_situation', 50)->nullable();
-            $table->string('pv_numero', 50)->nullable();
+            $table->integer('numero_situation')->nullable();
+            $table->integer('pv_numero')->nullable();
             $table->date('date_facture')->nullable();
             $table->decimal('sous_total', 12, 2)->nullable();
             $table->decimal('montant_facture', 12, 2)->nullable();
