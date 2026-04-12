@@ -111,13 +111,13 @@ class ExcelService
                         $date = Carbon::createFromFormat('d/m/Y', $row["Date"])->format('Y-m-d');
                     }
                     catch (\Throwable $th) {
-                        $date = null;
+                        $date = now();
                     }
                     try{
                         $dateEcheance = Carbon::createFromFormat('d/m/Y', $row["Echéance"])->format('Y-m-d');
                     }
                     catch (\Throwable $th) {
-                        $dateEcheance = null;
+                        $dateEcheance = now();
                     }
                     $affacturage = $row["Affacturage"] ?? null;
                     $affacturage = $affacturage == "TRUE" ? true : ($affacturage == "FALSE" ? false : null);
@@ -125,7 +125,7 @@ class ExcelService
                     $factures[] = [
                         "id" => $row["N° Facture"] ?? null,
                         "id_devis" => $row["N° Chantier"] ?? null,
-                        "numero_situation" => self::toNumber($row["N°Situation"] ?? null),
+                        "numero_situation" => self::toNumber($row["N°Situation"] ?? 1),
                         "pv_numero" => self::toNumber($row["P.V. N°"] ?? null),
                         "date_facture" => $date,
                         "sous_total" => self::toNumber($row["Sous-total"] ?? null),

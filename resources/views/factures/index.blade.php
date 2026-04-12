@@ -35,6 +35,7 @@
                 <tr>
                     <th class="px-4 py-3 text-sm text-gray-800">ID</th>
                     <th class="px-4 py-3 text-sm text-gray-800">ID Devis</th>
+                    <th class="px-4 py-3 text-sm text-gray-800">Sous devis</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Numero situation</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Numero Pv</th>
                     <th class="px-4 py-3 text-sm text-gray-800">Date</th>
@@ -53,6 +54,7 @@
                     <tr class="border-t hover:bg-gray-50">
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->id }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">#{{ $facture->id_devis }} {{ $facture->devis->client->nom_client }}</td>
+                        <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->sous_devis }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->numero_situation }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->pv_numero }}</td>
                         <td class="px-4 py-3 text-sm text-gray-800">{{ $facture->date_facture }}</td>

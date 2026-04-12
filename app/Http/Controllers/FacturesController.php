@@ -28,6 +28,7 @@ class FacturesController extends Controller
         $devis = Devis::all();
 
         $id_devis = $request->input('id_devis', null);
+        $sous_devis = $request->input('sous_devis', null);
         $numero_situation = $request->input('numero_situation', null);
         $pv_numero = $request->input('pv_numero', null);
         $date_facture = $request->input('date_facture', null);
@@ -37,7 +38,7 @@ class FacturesController extends Controller
         $affacturage = $request->input('affacturage', null);
 
         try {
-            $facture = FacturesService::create($id_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
+            $facture = FacturesService::create($id_devis, $sous_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
             return redirect()->route('factures.index', compact('devis'))->with('success', 'La facture a été créée avec succès');
         } catch (\Exception $e) {
             return redirect()->route('factures.create', compact('devis'))->with('error', $e->getMessage());
@@ -57,6 +58,7 @@ class FacturesController extends Controller
         $devis = Devis::all();
 
         $id_devis = $request->input('id_devis', null);
+        $sous_devis = $request->input('sous_devis', null);
         $numero_situation = $request->input('numero_situation', null);
         $pv_numero = $request->input('pv_numero', null);
         $date_facture = $request->input('date_facture', null);
@@ -64,9 +66,8 @@ class FacturesController extends Controller
         $montant_facture = $request->input('montant_facture', null);
         $echeance = $request->input('echeance', null);
         $affacturage = $request->input('affacturage', null);
-
         try {
-            $facture = FacturesService::update($facture, $id_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
+            $facture = FacturesService::update($facture, $id_devis, $sous_devis, $numero_situation, $pv_numero, $date_facture, $sous_total, $montant_facture, $echeance, $affacturage);
             return redirect()->route('factures.index', compact('devis'))->with('success', 'La facture a été mis à jour avec succès');
         } catch (\Exception $e) {
             return redirect()->route('factures.edit', compact('devis'), $id)->with('error', $e->getMessage());

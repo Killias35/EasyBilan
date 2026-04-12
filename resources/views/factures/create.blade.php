@@ -44,6 +44,13 @@
                 </div>
 
                 <div>
+                    <label class="block text-sm font-medium text-gray-700">Sous devis</label>
+                    <input type="text" name="sous_devis"
+                        value="{{ old('sous_devis', $facture->sous_devis) }}"
+                        class="mt-1 w-full border rounded-lg px-3 py-2">
+                </div>
+                
+                <div>
                     <label class="block text-sm font-medium text-gray-700">Numéro situation</label>
                     <input type="text" name="numero_situation"
                         value="{{ old('numero_situation') }}"

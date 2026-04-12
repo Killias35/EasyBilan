@@ -11,6 +11,7 @@ class Facture extends Model
 
     protected $fillable = [
         'id_devis',
+        'sous_devis',
         'numero_situation',
         'pv_numero',
         'date_facture',

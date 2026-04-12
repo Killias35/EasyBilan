@@ -33,8 +33,11 @@ class ExportController extends Controller
         else{
             $facture = null;
         }
-        
-        return view('pdf.devis.create', compact('devi', 'devis', 'factures', 'facture'));
+
+        return view('pdf.devis.create', compact(
+            'devi', 'devis', 
+            'factures', 'facture'
+        ));
     }
 
     public function downloadPdf(Request $request)
