@@ -9,5 +9,5 @@ terminer création facture a imprimer
 lors de création facture a imprimer, choisir quels materiaux facturé et a combien de %, 
 detecter combien il reste a facturer
 
-dans création materieau, changer text
-changer ajouter materiaux text dans devis
+X dans création materieau, changer text
+X changer ajouter materiaux text dans devis

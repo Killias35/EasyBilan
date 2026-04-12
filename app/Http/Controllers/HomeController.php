@@ -8,6 +8,7 @@ use App\Models\Client;
 use App\Models\Devis;
 use App\Models\Chantier;
 use App\Models\Reglement;
+use App\Models\Materiel;
 
 class HomeController extends Controller
 {
@@ -17,7 +18,8 @@ class HomeController extends Controller
         $chantiersCount = Chantier::count();
         $facturesCount = Facture::count();
         $reglementsCount = Reglement::count();
+        $materiauxCount = Materiel::count();
 
-        return view('home' , compact('clientsCount', 'devisCount', 'chantiersCount', 'facturesCount', 'reglementsCount'));
+        return view('home' , compact('clientsCount', 'devisCount', 'chantiersCount', 'facturesCount', 'reglementsCount', 'materiauxCount'));
     }
 }

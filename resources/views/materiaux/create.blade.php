@@ -3,7 +3,7 @@
 @section('content')
 <div class="max-w-4xl mx-auto px-4 py-10">
 
-    <h1 class="text-3xl font-semibold mb-6">Créer une facture</h1>
+    <h1 class="text-3xl font-semibold mb-6">Créer un materiel</h1>
     @if(session('success'))
         <div class="bg-teal-100 border-t-4 border-teal-500 rounded-b text-teal-900 px-4 py-3 shadow-md" role="alert">
             <div class="flex">

@@ -8,7 +8,7 @@
 
     <h1 class="text-3xl font-semibold mb-8">Tableau de bord</h1>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
 
         <div class="bg-white shadow rounded-xl p-6 text-center border border-gray-200">
             <p class="text-gray-500 text-sm">Clients</p>
@@ -33,6 +33,11 @@
         <div class="bg-white shadow rounded-xl p-6 text-center border border-gray-200">
             <p class="text-gray-500 text-sm">Règlements</p>
             <p class="text-4xl font-bold mt-2">{{ $reglementsCount }}</p>
+        </div>
+
+        <div class="bg-white shadow rounded-xl p-6 text-center border border-gray-200">
+            <p class="text-gray-500 text-sm">Materiaux</p>
+            <p class="text-4xl font-bold mt-2">{{ $materiauxCount }}</p>
         </div>
 
     </div>

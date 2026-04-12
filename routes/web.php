@@ -17,6 +17,8 @@ use App\Http\Controllers\StatistiqueController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// CRUDS
+
 Route::get('/clients', [ClientsController::class, 'index'])->name('clients.index');
 Route::get('/clients/create', [ClientsController::class, 'create'])->name('clients.create');
 Route::post('/clients/create', [ClientsController::class, 'store'])->name('clients.store');
@@ -65,15 +67,15 @@ Route::get('/reglements/delete/{reglement}', [ReglementsController::class, 'dest
 // Stats
 Route::get('/stats/client_devis/{client}', [StatistiqueController::class, 'clientDevis'])->name('stats.client_devis');
 
-
+// Import via excel
 
 Route::get('/db/import', [ExcelController::class, 'show'])->name('excel.show');
 Route::post('/db/import/debug', [ExcelController::class, 'debug'])->name('excel.debug');
 Route::post('/db/import', [ExcelController::class, 'store'])->name('excel.upload');
 
-Route::get('/export', [ExportController::class, 'create'])->name('export.create');
-Route::post('/export/upload', [ExportController::class, 'upload'])->name('export.upload');
+// Export
 
+Route::get('/export', [ExportController::class, 'create'])->name('export.create');
 Route::get('/export/download', [ExportController::class, 'downloadPdf'])->name('export.download');
 
 // Reinitialiser la base de données
